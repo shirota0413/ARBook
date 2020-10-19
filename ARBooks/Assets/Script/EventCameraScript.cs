@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventCameraTest : MonoBehaviour {
+public class EventCameraScript : MonoBehaviour {
     Camera myCamera;
     // Start is called before the first frame update
     void Start() {

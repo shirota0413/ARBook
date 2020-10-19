@@ -65,6 +65,9 @@ public class Book : MonoBehaviour {
     bool pageDragging = false;
     //current flip mode
     FlipMode mode;
+
+    //カメラ
+    Camera myCamera;
     
     void Start()
     {
@@ -76,6 +79,7 @@ public class Book : MonoBehaviour {
         Right.gameObject.SetActive(false);
         UpdateSprites();
         Vector3 globalsb = BookPanel.transform.position + new Vector3(0, -pageHeight / 2);
+        Debug.Log(globalsb);
         sb = transformPoint(globalsb);
         Vector3 globalebr = BookPanel.transform.position + new Vector3(pageWidth, -pageHeight / 2);
         ebr = transformPoint(globalebr);
@@ -91,20 +95,20 @@ public class Book : MonoBehaviour {
         Shadow.rectTransform.sizeDelta = new Vector2(scaledPageWidth, scaledPageHeight + scaledPageWidth * 0.6f);
         ShadowLTR.rectTransform.sizeDelta = new Vector2(scaledPageWidth, scaledPageHeight + scaledPageWidth * 0.6f);
         NextPageClip.rectTransform.sizeDelta = new Vector2(scaledPageWidth, scaledPageHeight + scaledPageWidth * 0.6f);
+        //新規
+        myCamera = GameObject.Find("AR Camera").GetComponent<Camera>();
     }
     public Vector3 transformPoint(Vector3 global)
     {
-        Vector2 localPos = BookPanel.InverseTransformPoint(global);
+        //Vector2 localPos = BookPanel.InverseTransformPoint(global);
+        Vector2 localPos = global;
         //RectTransformUtility.ScreenPointToLocalPointInRectangle(BookPanel, global, null, out localPos);
         return localPos;
     }
     void Update()
     {
-        Debug.Log(pageDragging);
-        Debug.Log(interactable);
         if (pageDragging&&interactable)
         {
-            Debug.Log("hoge");
             UpdateBook();
         }
         //Debug.Log("mouse local pos:" + transformPoint(Input.mousePosition));
@@ -112,7 +116,8 @@ public class Book : MonoBehaviour {
     }
     public void UpdateBook()
     {
-        f= Vector3.Lerp(f,transformPoint( Input.mousePosition), Time.deltaTime * 10);
+        f= Vector3.Lerp(f,myCamera.ScreenToWorldPoint(Input.mousePosition), Time.deltaTime * 10);
+       // Debug.Log(f);
         if (mode == FlipMode.RightToLeft)
             UpdateBookRTLToPoint(f);
         else
@@ -218,6 +223,7 @@ public class Book : MonoBehaviour {
     {
         Vector3 c;
         f = followLocation;
+        //Debug.Log(f);
         float F_SB_dy = f.y - sb.y;
         float F_SB_dx = f.x - sb.x;
         float F_SB_Angle = Mathf.Atan2(F_SB_dy, F_SB_dx);
@@ -240,7 +246,6 @@ public class Book : MonoBehaviour {
     }
     public void DragRightPageToPoint(Vector3 point)
     {
-        Debug.Log("DragRightPageToPoint");
         if (currentPage >= bookPages.Length) return;
         pageDragging = true;
         mode = FlipMode.RightToLeft;
@@ -270,14 +275,12 @@ public class Book : MonoBehaviour {
     }
     public void OnMouseDragRightPage()
     {
-        Debug.Log("OnMouseDragRightPage");
         if (interactable)
         DragRightPageToPoint(transformPoint(Input.mousePosition));
         
     }
     public void DragLeftPageToPoint(Vector3 point)
     {
-        Debug.Log("DragLeftPageToPoint");
         if (currentPage <= 0) return;
         pageDragging = true;
         mode = FlipMode.LeftToRight;
@@ -324,11 +327,14 @@ public class Book : MonoBehaviour {
             float distanceToRight = Vector2.Distance(c, ebr);
             //正 distanceToRight 大 だったらページがめくれる(左にドラッグしたら)
             //負 distanceToLeft 大
-            Debug.Log(distanceToRight);
-            Debug.Log(distanceToLeft);
+            // Debug.Log(c);
+            // Debug.Log(ebl);
+            // Debug.Log(ebr);
+            //Debug.Log(distanceToRight);
+            //Debug.Log(distanceToLeft);
             if (distanceToRight < distanceToLeft && mode == FlipMode.RightToLeft) {
-                //TweenBack();
-                TweenForward();
+                TweenBack();
+                //TweenForward();
             } else if (distanceToRight > distanceToLeft && mode == FlipMode.LeftToRight) {
                 TweenBack();
             } else {
