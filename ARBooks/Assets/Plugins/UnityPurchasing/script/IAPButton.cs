@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 namespace UnityEngine.Purchasing
 {
@@ -109,7 +110,7 @@ namespace UnityEngine.Purchasing
 
                 CodelessIAPStoreListener.Instance.InitiatePurchase(productId);
 
-                
+                // SceneManager.LoadScene("SampleScene");
             }
         }
 
@@ -160,8 +161,6 @@ namespace UnityEngine.Purchasing
             Debug.Log("購入！");
 
             onPurchaseComplete.Invoke(e.purchasedProduct);
-
-            SceneManager.LoadScene("SampleScene");
 
             return (consumePurchase) ? PurchaseProcessingResult.Complete : PurchaseProcessingResult.Pending;
         }
