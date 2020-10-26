@@ -13,11 +13,17 @@ public class PageCurlScript : MonoBehaviour {
 
     GameObject modeButton;
     ModeButtonScript script;
+    GameObject textPanel;
+    BookTextScript textScript;
     bool mode;
+
+    public string BookText;
 
     void Start() {
         modeButton = GameObject.Find("Canvas/ModeButton");
         script = modeButton.GetComponent<ModeButtonScript>();
+        textPanel = GameObject.Find("Canvas/TextPanel/Text");
+        textScript = textPanel.GetComponent<BookTextScript>();
     }
 
     public void SwitchPageCurl() {
@@ -25,6 +31,8 @@ public class PageCurlScript : MonoBehaviour {
         if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170) && !mode) {
             NextCurl = !NextCurl;
             BackCurl = !BackCurl;
+            Debug.Log(BookText);
+            textScript.SetText(BookText);
         }
     }
 
@@ -36,4 +44,3 @@ public class PageCurlScript : MonoBehaviour {
         }
     }
 }
-
