@@ -11,18 +11,8 @@ public class PageCurlScript : MonoBehaviour {
     bool NextCurl = false;
     bool BackCurl = true;
 
-    GameObject modeButton;
-    ModeButtonScript script;
-    bool mode;
-
-    void Start() {
-        modeButton = GameObject.Find("Canvas/ModeButton");
-        script = modeButton.GetComponent<ModeButtonScript>();
-    }
-
     public void SwitchPageCurl() {
-        mode = script.getMode();
-        if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170) && !mode) {
+        if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170)) {
             NextCurl = !NextCurl;
             BackCurl = !BackCurl;
         }
