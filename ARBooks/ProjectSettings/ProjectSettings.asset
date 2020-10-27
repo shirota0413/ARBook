@@ -126,9 +126,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: 4800000, guid: e7c77f6eaab324a819efdc13b8125a39, type: 3}
-  - {fileID: -5749774589366567421, guid: b313ec4187ca24bd59d1340c88896eb2, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -658,7 +656,7 @@ PlayerSettings:
     Build: 0
     Collab: 0
     Game Performance: 0
-    Purchasing: 1
+    Purchasing: 0
     UNet: 1
     Unity Ads: 0
   luminIcon:
@@ -673,10 +671,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 19ce008b-7b02-407f-9f6d-014584a2a3e3
+  cloudProjectId: 9448f616-ac50-4e1d-b5dc-aa2cb950c921
   framebufferDepthMemorylessMode: 0
-  projectName: ARBooks
-  organizationId: ymsrri
+  projectName: ARBooks (2)
+  organizationId: shirota05
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
