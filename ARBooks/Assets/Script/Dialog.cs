@@ -19,7 +19,7 @@ public class Dialog : MonoBehaviour
     {
         this.FixDialog?.Invoke(DialogResult.OK);
         Destroy(this.gameObject);
-        SceneManager.LoadScene("Text");
+        SceneManager.LoadScene("SampleScene");
     }
     
     // Cancelボタンが押されたとき

@@ -20,8 +20,6 @@ public class PageCurlScript : MonoBehaviour {
     public string BookText;
 
     void Start() {
-        modeButton = GameObject.Find("Canvas/ModeButton");
-        script = modeButton.GetComponent<ModeButtonScript>();
         textPanel = GameObject.Find("Canvas/TextPanel/Text");
         textScript = textPanel.GetComponent<BookTextScript>();
     }
