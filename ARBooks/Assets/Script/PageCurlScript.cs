@@ -27,8 +27,7 @@ public class PageCurlScript : MonoBehaviour {
     }
 
     public void SwitchPageCurl() {
-        mode = script.getMode();
-        if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170) && !mode) {
+        if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170)) {
             NextCurl = !NextCurl;
             BackCurl = !BackCurl;
             Debug.Log(BookText);
