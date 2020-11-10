@@ -10,8 +10,7 @@ public class PageCurlScript : MonoBehaviour {
     // Start is called before the first frame update
     bool NextCurl = false;
     bool BackCurl = true;
-    bool hogefuga;
-
+    
     GameObject textPanel;
     BookTextScript textScript;
     public GameObject leftPage;
@@ -27,7 +26,7 @@ public class PageCurlScript : MonoBehaviour {
     
     void Start() {
         textPanel = GameObject.Find("Canvas/TextPanel/Text");
-        textScript = textPanel.GetComponent<BookTextScript>();
+        //textScript = textPanel.GetComponent<BookTextScript>();
     }
 
     //calRotate 負の時は，ダメ
@@ -36,7 +35,6 @@ public class PageCurlScript : MonoBehaviour {
         if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170)  && (rightCalRotate >= 0 &&  leftCalRotate <=0)) {
             NextCurl = !NextCurl;
             BackCurl = !BackCurl;
-            textScript.SetText(BookText);
         }
     }
 
@@ -50,5 +48,9 @@ public class PageCurlScript : MonoBehaviour {
         leftCalRotate = leftAfter - leftPage.transform.eulerAngles.z;
         rightAfter = rightPage.transform.eulerAngles.z;
         leftAfter = leftPage.transform.eulerAngles.z;
+        // if (rightPage.transform.eulerAngles.z < 5 && leftPage.transform.eulerAngles.z > 175) {
+
+        //     textScript.SetText(BookText);
+        // }
     }
 }

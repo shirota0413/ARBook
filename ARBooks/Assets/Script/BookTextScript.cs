@@ -8,6 +8,7 @@ public class BookTextScript : MonoBehaviour
     public Text text;
 
     public string SetText(string BookText){
+        BookText = BookText.Replace(" ", "\n");
         return text.text = BookText;
     }
 
