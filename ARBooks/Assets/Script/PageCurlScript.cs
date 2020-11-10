@@ -11,8 +11,6 @@ public class PageCurlScript : MonoBehaviour {
     bool NextCurl = false;
     bool BackCurl = true;
     
-    GameObject textPanel;
-    BookTextScript textScript;
     public GameObject leftPage;
     public GameObject rightPage;
 
@@ -21,13 +19,6 @@ public class PageCurlScript : MonoBehaviour {
     float rightCalRotate = 0;
     float leftCalRotate = 0;
 
-
-    public string BookText;
-    
-    void Start() {
-        textPanel = GameObject.Find("Canvas/TextPanel/Text");
-        //textScript = textPanel.GetComponent<BookTextScript>();
-    }
 
     //calRotate 負の時は，ダメ
     //calRotate　正の時　ok
@@ -48,9 +39,5 @@ public class PageCurlScript : MonoBehaviour {
         leftCalRotate = leftAfter - leftPage.transform.eulerAngles.z;
         rightAfter = rightPage.transform.eulerAngles.z;
         leftAfter = leftPage.transform.eulerAngles.z;
-        // if (rightPage.transform.eulerAngles.z < 5 && leftPage.transform.eulerAngles.z > 175) {
-
-        //     textScript.SetText(BookText);
-        // }
     }
 }
