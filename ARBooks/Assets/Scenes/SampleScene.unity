@@ -794,6 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 1043505386504627021, guid: 8ec85ca1bb1c54c7caa3dc01345e3415, type: 3}
+  Plane: {fileID: 7442131414846059493, guid: e5cad3c28bf004e9e9a61b3c7eb12dc2, type: 3}
 --- !u!114 &959193377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 7442131414846059493, guid: e5cad3c28bf004e9e9a61b3c7eb12dc2, type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!114 &959193378
 MonoBehaviour:
   m_ObjectHideFlags: 0
