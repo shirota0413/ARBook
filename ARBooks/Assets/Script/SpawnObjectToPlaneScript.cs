@@ -17,7 +17,6 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
     ARPlaneManager planeManager;
     bool setActivePlane = false;
 
-    bool hoge = false;
 
     void setPlane() {
         if (setActivePlane) {
