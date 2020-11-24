@@ -3,8 +3,8 @@ using System;
 using UnityEngine.SceneManagement;
 
 
-public class Dialog : MonoBehaviour
-{
+public class Dialog : MonoBehaviour {
+
     public enum DialogResult
     {
         OK,
@@ -27,6 +27,7 @@ public class Dialog : MonoBehaviour
     {
         // イベント通知先があれば通知してダイアログを破棄してしまう
         this.FixDialog?.Invoke(DialogResult.Cancel);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        
     }
 }
