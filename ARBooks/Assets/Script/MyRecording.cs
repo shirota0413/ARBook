@@ -12,6 +12,9 @@ public class MyRecording : MonoBehaviour{
     int i = 1;
     public int num;
 
+    bool RecordTag = true;
+    bool PlayTag = true;
+
     void Start() {
         //マイクデバイスを探す
         foreach (string device in Microphone.devices) {
@@ -21,27 +24,50 @@ public class MyRecording : MonoBehaviour{
         }
     }
 
-    public void StartButton() {
-        Debug.Log("recording start");
-        // deviceName: "null" -> デフォルトのマイクを指定
-        myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
-    }
-
-    public void EndButton() {
-        if (Microphone.IsRecording(deviceName: micName) == true) {
-            Debug.Log("recording stoped");
-            Microphone.End(deviceName: micName);
-        } else {
-            Debug.Log("not recording");
+    public void RecoerdButton() {
+        if (RecordTag) {
+            Debug.Log("recording start");
+            // deviceName: "null" -> デフォルトのマイクを指定
+            myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
+            RecordTag = !RecordTag;
+        } else if(!RecordTag) {
+                if (Microphone.IsRecording(deviceName: micName) == true) {
+                Debug.Log("recording stoped");
+                Microphone.End(deviceName: micName);
+            } else {
+                Debug.Log("not recording");
+            }
+            RecordTag = !RecordTag;
         }
     }
 
+    // public void StartButton() {
+    //     Debug.Log("recording start");
+    //     // deviceName: "null" -> デフォルトのマイクを指定
+    //     myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
+    // }
+
+    // public void EndButton() {
+    //     if (Microphone.IsRecording(deviceName: micName) == true) {
+    //         Debug.Log("recording stoped");
+    //         Microphone.End(deviceName: micName);
+    //     } else {
+    //         Debug.Log("not recording");
+    //     }
+    // }
+
     public void PlayButton() {
-        Debug.Log("play");
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = myclip;
-        Debug.Log(myclip);
-        audioSource.Play();
+        if (PlayTag) {
+            Debug.Log("play");
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.clip = myclip;
+            Debug.Log(myclip);
+            audioSource.Play();
+            PlayTag = !PlayTag;
+        } else if (!PlayTag) {
+            audioSource.Stop();
+            PlayTag = !PlayTag;
+        }
     }
 
     public void SaveButton()　{
