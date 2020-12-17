@@ -353,7 +353,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: "AR\u6A5F\u80FD\u306B\u30AB\u30E1\u30E9\u3092\u4F7F\u3044\u307E\u3059"
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: "\u97F3\u58F0\u9332\u97F3\u6A5F\u80FD\u306B\u4F7F\u3044\u307E\u3059"
   switchNMETAOverride: 
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144

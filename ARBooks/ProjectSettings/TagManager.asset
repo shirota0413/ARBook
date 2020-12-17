@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - book
+  - toggle
+  - Record
+  - AR Plane
   layers:
   - Default
   - TransparentFX
