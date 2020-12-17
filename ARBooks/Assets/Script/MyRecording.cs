@@ -13,7 +13,26 @@ public class MyRecording : MonoBehaviour{
     public int num;
 
     bool RecordTag = true;
+    private bool rbtag = true;
+
+    public bool RecoerdButtonTag {
+        get{ return rbtag; }
+        set{ rbtag = value; }
+    }
+
     bool PlayTag = true;
+    private　bool pbtag = false;
+
+    public bool PlayButtonTag {
+        get{ return pbtag; }
+        set{ pbtag = value; }
+    }
+
+    private bool svtag = false;
+    public bool SaveButtonTag {
+        get{ return svtag; }
+        set{ svtag = value; }
+    }
 
     void Start() {
         //マイクデバイスを探す
@@ -27,6 +46,8 @@ public class MyRecording : MonoBehaviour{
     public void RecoerdButton() {
         if (RecordTag) {
             Debug.Log("recording start");
+            PlayButtonTag = false;
+            SaveButtonTag = false;
             // deviceName: "null" -> デフォルトのマイクを指定
             myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
             RecordTag = !RecordTag;
@@ -34,6 +55,8 @@ public class MyRecording : MonoBehaviour{
                 if (Microphone.IsRecording(deviceName: micName) == true) {
                 Debug.Log("recording stoped");
                 Microphone.End(deviceName: micName);
+                PlayButtonTag = true;
+                SaveButtonTag = true;
             } else {
                 Debug.Log("not recording");
             }
@@ -41,30 +64,18 @@ public class MyRecording : MonoBehaviour{
         }
     }
 
-    // public void StartButton() {
-    //     Debug.Log("recording start");
-    //     // deviceName: "null" -> デフォルトのマイクを指定
-    //     myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
-    // }
-
-    // public void EndButton() {
-    //     if (Microphone.IsRecording(deviceName: micName) == true) {
-    //         Debug.Log("recording stoped");
-    //         Microphone.End(deviceName: micName);
-    //     } else {
-    //         Debug.Log("not recording");
-    //     }
-    // }
-
     public void PlayButton() {
         if (PlayTag) {
+            RecoerdButtonTag = false;
+            SaveButtonTag = false;
             Debug.Log("play");
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.clip = myclip;
-            Debug.Log(myclip);
             audioSource.Play();
             PlayTag = !PlayTag;
         } else if (!PlayTag) {
+            RecoerdButtonTag = true;
+            SaveButtonTag = true;
             audioSource.Stop();
             PlayTag = !PlayTag;
         }
@@ -74,10 +85,10 @@ public class MyRecording : MonoBehaviour{
         if (i <= 17) {
             Debug.Log("save");
             SavWav.Save(i.ToString(), myclip);
+            PlayButtonTag = false;
+            SaveButtonTag = false;
+            myclip = null;
             i += 1;
         }
-
-
-        //SavWav.Save("mic_" + DateTime.Now.ToString("yyyyMMddhhmmss"), myclip);
     }
 }

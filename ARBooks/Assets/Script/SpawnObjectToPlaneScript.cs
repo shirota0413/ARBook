@@ -17,6 +17,7 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
     ARPlaneManager planeManager;
     bool setActivePlane = false;
 
+    AudioSource audioSource;
 
     void setPlane() {
         if (setActivePlane) {
@@ -33,6 +34,7 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
     void Start() {
         arRaycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
             if (arRaycastManager.Raycast(Input.GetTouch(0).position, hits, TrackableType.PlaneWithinPolygon)) {
                 Pose hitPose = hits[0].pose;
                 if (spawnObject == null) {
+                    audioSource.Play();
                     spawnObject = Instantiate(cubePrefab, hitPose.position, Quaternion.identity);
                     bookObject = GameObject.FindGameObjectWithTag("book");
                     script = bookObject.GetComponent<PropertyScript>();

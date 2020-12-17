@@ -19,6 +19,10 @@ public class PageCurlScript : MonoBehaviour {
     float rightCalRotate = 0;
     float leftCalRotate = 0;
 
+    AudioClip sound1;
+    AudioSource audioSource;
+    
+
 
     //calRotate 負の時は，ダメ
     //calRotate　正の時　ok
@@ -26,7 +30,13 @@ public class PageCurlScript : MonoBehaviour {
         if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170)  && (rightCalRotate >= 0 &&  leftCalRotate <=0)) {
             NextCurl = !NextCurl;
             BackCurl = !BackCurl;
+            audioSource.PlayOneShot(sound1);
         }
+    }
+
+    void Start() {
+        sound1 = Resources.Load<AudioClip>("Audio/BookFlip");
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
