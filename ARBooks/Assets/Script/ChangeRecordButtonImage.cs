@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeImage : MonoBehaviour {
-    public Sprite _on;
-    public Sprite _off;
+public class ChangeRecordButtonImage : MonoBehaviour {
+    public Sprite on;
+    public Sprite off;
     private bool flg = true;
     Image img;
     Button btn;
     GameObject recordObject;
-    MyRecording script = null;
+    MyRecording myRecordingScript = null;
     bool buttonTag;
 
 
     void InteractableChange() {
         if(this.gameObject.name == "Play") {
-            btn.interactable = script.PlayButtonTag;
+            btn.interactable = myRecordingScript.PlayButtonTag;
         } else if (this.gameObject.name == "Start") {
-            btn.interactable = script.RecoerdButtonTag;
+            btn.interactable = myRecordingScript.RecoerdButtonTag;
         } else if (this.gameObject.name == "Save") {
-            btn.interactable = script.SaveButtonTag;
+            btn.interactable = myRecordingScript.SaveButtonTag;
         }
     }
 
     void Start() {
         recordObject = GameObject.FindGameObjectWithTag("Record");
-        script = recordObject.GetComponent<MyRecording>();
+        myRecordingScript = recordObject.GetComponent<MyRecording>();
         btn = GetComponent<Button>();
         InteractableChange();
     }
@@ -35,9 +35,10 @@ public class ChangeImage : MonoBehaviour {
         InteractableChange();
     }
 
-    public void changeImage(){
+
+    public void ChangeButtonImage(){
         img = GetComponent<Image>();
-        img.sprite = (flg) ? _on : _off;
+        img.sprite = (flg) ? on : off;
         flg = !flg;
     }
 }

@@ -6,13 +6,16 @@ using System;
 public class MyRecording : MonoBehaviour{
     AudioClip myclip;
     AudioSource audioSource;
-    string micName = "null"; //マイクデバイスの名前
-    const int samplingFrequency = 44100; //サンプリング周波数
-    const int maxTime_s = 30; //最大録音時間[s]
-    int i = 1;
+    //マイクデバイスの名前
+    string micName = "null"; 
+    //サンプリング周波数
+    const int samplingFrequency = 44100;
+    //最大録音時間[s]
+    const int maxTime_s = 30; 
+    int pageCount = 1;
     public int num;
 
-    bool RecordTag = true;
+    bool recordTag = true;
     private bool rbtag = true;
 
     public bool RecoerdButtonTag {
@@ -20,7 +23,7 @@ public class MyRecording : MonoBehaviour{
         set{ rbtag = value; }
     }
 
-    bool PlayTag = true;
+    bool playTag = true;
     private　bool pbtag = false;
 
     public bool PlayButtonTag {
@@ -43,15 +46,15 @@ public class MyRecording : MonoBehaviour{
         }
     }
 
+    //録音を開始する
     public void RecoerdButton() {
-        if (RecordTag) {
+        if (recordTag) {
             Debug.Log("recording start");
             PlayButtonTag = false;
             SaveButtonTag = false;
-            // deviceName: "null" -> デフォルトのマイクを指定
             myclip = Microphone.Start(deviceName: micName, loop: false, lengthSec: maxTime_s, frequency: samplingFrequency);
-            RecordTag = !RecordTag;
-        } else if(!RecordTag) {
+            recordTag = !recordTag;
+        } else if(!recordTag) {
                 if (Microphone.IsRecording(deviceName: micName) == true) {
                 Debug.Log("recording stoped");
                 Microphone.End(deviceName: micName);
@@ -60,35 +63,37 @@ public class MyRecording : MonoBehaviour{
             } else {
                 Debug.Log("not recording");
             }
-            RecordTag = !RecordTag;
+            recordTag = !recordTag;
         }
     }
 
+    //録音したデータを再生する．
     public void PlayButton() {
-        if (PlayTag) {
+        if (playTag) {
             RecoerdButtonTag = false;
             SaveButtonTag = false;
             Debug.Log("play");
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.clip = myclip;
             audioSource.Play();
-            PlayTag = !PlayTag;
-        } else if (!PlayTag) {
+            playTag = !playTag;
+        } else if (!playTag) {
             RecoerdButtonTag = true;
             SaveButtonTag = true;
             audioSource.Stop();
-            PlayTag = !PlayTag;
+            playTag = !playTag;
         }
     }
 
+    //saveする
     public void SaveButton()　{
-        if (i <= 17) {
+        if (pageCount <= 17) {
             Debug.Log("save");
-            SavWav.Save(i.ToString(), myclip);
+            SavWav.Save(pageCount.ToString(), myclip);
             PlayButtonTag = false;
             SaveButtonTag = false;
             myclip = null;
-            i += 1;
+            pageCount += 1;
         }
     }
 }

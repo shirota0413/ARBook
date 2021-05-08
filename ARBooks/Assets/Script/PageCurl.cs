@@ -6,10 +6,10 @@ using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.EventSystems;
 
-public class PageCurlScript : MonoBehaviour {
+public class PageCurl : MonoBehaviour {
     // Start is called before the first frame update
-    bool NextCurl = false;
-    bool BackCurl = true;
+    bool nextCurl = false;
+    bool backCurl = true;
     
     public GameObject leftPage;
     public GameObject rightPage;
@@ -19,30 +19,31 @@ public class PageCurlScript : MonoBehaviour {
     float rightCalRotate = 0;
     float leftCalRotate = 0;
 
-    AudioClip sound1;
+    AudioClip bookFlipSE;
     AudioSource audioSource;
     
 
-
-    //calRotate 負の時は，ダメ
-    //calRotate　正の時　ok
+    
+    //ページが動いているか動いていないか確認する．ページが動いていない時は，Trueとなりめくることができる
     public void SwitchPageCurl() {
         if ((this.transform.eulerAngles.z <= 0.5f || Mathf.Abs(this.transform.eulerAngles.z)  >= 170)  && (rightCalRotate >= 0 &&  leftCalRotate <=0)) {
-            NextCurl = !NextCurl;
-            BackCurl = !BackCurl;
-            audioSource.PlayOneShot(sound1);
+            nextCurl = !nextCurl;
+            backCurl = !backCurl;
+            audioSource.PlayOneShot(bookFlipSE);
         }
     }
 
     void Start() {
-        sound1 = Resources.Load<AudioClip>("Audio/BookFlip");
+        bookFlipSE = Resources.Load<AudioClip>("Audio/BookFlip");
         audioSource = GetComponent<AudioSource>();
     }
 
+    //ページを動かしている．
+    //また，ページの状態を保存している
     void Update() {
-        if (this.transform.eulerAngles.z < 180 && NextCurl) {
+        if (this.transform.eulerAngles.z < 180 && nextCurl) {
             this.transform.Rotate(0, 0, 1.5f, Space.World );
-        } else if (this.transform.eulerAngles.z  > 0.5 && BackCurl) {
+        } else if (this.transform.eulerAngles.z  > 0.5 && backCurl) {
             this.transform.Rotate (0, 0, -1.5f, Space.World );
         }
         rightCalRotate = rightAfter - rightPage.transform.eulerAngles.z;

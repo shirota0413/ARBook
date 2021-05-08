@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropertyScript : MonoBehaviour {
+public class PropertyTouch : MonoBehaviour {
     private bool tag;
 
     public bool Property {

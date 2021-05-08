@@ -220,8 +220,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 9374572}
-        m_TargetAssemblyTypeName: ChangeImage, Assembly-CSharp
-        m_MethodName: changeImage
+        m_TargetAssemblyTypeName: ChangeRecordButtonImage, Assembly-CSharp
+        m_MethodName: ChangeButtonImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191212d340e1e44fdaa3060700e8d94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _on: {fileID: 21300000, guid: a06d817af30104bd796b7585ccdace70, type: 3}
-  _off: {fileID: 21300000, guid: e5f2e339eda4e4c59ab7c4befd1ba4e1, type: 3}
+  on: {fileID: 21300000, guid: a06d817af30104bd796b7585ccdace70, type: 3}
+  off: {fileID: 21300000, guid: e5f2e339eda4e4c59ab7c4befd1ba4e1, type: 3}
 --- !u!82 &9374573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9045cc09344ae0a652bb7f47b8fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 804721231}
+  displayText: {fileID: 804721231}
 --- !u!114 &804721231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,9 +1224,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1207564287}
-        m_TargetAssemblyTypeName: FileRead, Assembly-CSharp
-        m_MethodName: NextText
+      - m_Target: {fileID: 1092819264}
+        m_TargetAssemblyTypeName: SoundScript, Assembly-CSharp
+        m_MethodName: SEPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1236,9 +1236,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1092819264}
-        m_TargetAssemblyTypeName: SoundScript, Assembly-CSharp
-        m_MethodName: SEPlay
+      - m_Target: {fileID: 1207564287}
+        m_TargetAssemblyTypeName: StoryFileReadScript, Assembly-CSharp
+        m_MethodName: NextStoryText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1298,8 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191212d340e1e44fdaa3060700e8d94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _on: {fileID: 0}
-  _off: {fileID: 0}
+  on: {fileID: 0}
+  off: {fileID: 0}
 --- !u!82 &1092819263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: 1170598182}
   - component: {fileID: 1170598181}
   m_Layer: 5
-  m_Name: backgraund
+  m_Name: Backgraund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 1207564288}
   - component: {fileID: 1207564287}
   m_Layer: 0
-  m_Name: FileRead
+  m_Name: SotryFileRead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1207564286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011f78b25eb8447bdbdef1502931b5f6, type: 3}
+  m_Script: {fileID: 11500000, guid: d642f7a5391d64309a6424b163e4df4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RawTextFile: {fileID: 4900000, guid: f76d34bd3f0da47e4b0f0e5c70ca8291, type: 3}
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 1239011989}
   - component: {fileID: 1239011988}
   m_Layer: 5
-  m_Name: frame
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1767,8 +1767,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1842640570}
-        m_TargetAssemblyTypeName: ChangeImage, Assembly-CSharp
-        m_MethodName: changeImage
+        m_TargetAssemblyTypeName: ChangeRecordButtonImage, Assembly-CSharp
+        m_MethodName: ChangeButtonImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1840,8 +1840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191212d340e1e44fdaa3060700e8d94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _on: {fileID: 21300000, guid: 91145b933f2f941eeb54d3047b7cc59d, type: 3}
-  _off: {fileID: 21300000, guid: a9776e36ef60843a293ab3458c12bafa, type: 3}
+  on: {fileID: 21300000, guid: 91145b933f2f941eeb54d3047b7cc59d, type: 3}
+  off: {fileID: 21300000, guid: a9776e36ef60843a293ab3458c12bafa, type: 3}
 --- !u!114 &1842640571
 MonoBehaviour:
   m_ObjectHideFlags: 0

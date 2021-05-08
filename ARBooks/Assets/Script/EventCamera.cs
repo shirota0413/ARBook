@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventCameraScript : MonoBehaviour {
+public class EventCamera : MonoBehaviour {
     Camera myCamera;
-    // Start is called before the first frame update
+
+    //Event Cameraの設定
     void Start() {
-        //canvas.GetComponent<Canvas> (). = Camera.main;
         myCamera = GameObject.Find("AR Camera").GetComponent<Camera>();
         Canvas theCanvas = GetComponent<Canvas>();
         theCanvas.worldCamera = myCamera;
         Debug.Log(theCanvas.worldCamera);
     }
-
-    // Update is called once per frame
 }

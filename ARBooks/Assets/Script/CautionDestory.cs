@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetFalse : MonoBehaviour {
-    GameObject book;
-    // Start is called before the first frame update
+public class CautionDestory : MonoBehaviour {
+    
+
     void DestoryIfExist(){
+        GameObject book;
         book = GameObject.FindGameObjectWithTag("book");
         if ( book == null ) {
             return;
@@ -13,8 +14,6 @@ public class SetFalse : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-
-    // Update is called once per frame
     void Update() {
         DestoryIfExist();
     }

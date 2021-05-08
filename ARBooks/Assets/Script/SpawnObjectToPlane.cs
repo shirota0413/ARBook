@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class SpawnObjectToPlaneScript : MonoBehaviour {
+public class SpawnObjectToPlane : MonoBehaviour {
     public GameObject cubePrefab;
     GameObject spawnObject;
     ARRaycastManager arRaycastManager;
@@ -12,13 +12,14 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     GameObject bookObject;
-    PropertyScript script = null;
+    PropertyTouch propertyTouchscript = null;
 
     ARPlaneManager planeManager;
     bool setActivePlane = false;
 
     AudioSource audioSource;
 
+    //Planeの可視化の切り替え
     void setPlane() {
         if (setActivePlane) {
             foreach (var plane in planeManager.trackables){
@@ -30,14 +31,14 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
             }
         }
     }
-    // Start is called before the first frame update
+
     void Start() {
         arRaycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
+
     void Update() {
         setPlane();
         if (Input.touchCount > 0) {
@@ -47,17 +48,17 @@ public class SpawnObjectToPlaneScript : MonoBehaviour {
                     audioSource.Play();
                     spawnObject = Instantiate(cubePrefab, hitPose.position, Quaternion.identity);
                     bookObject = GameObject.FindGameObjectWithTag("book");
-                    script = bookObject.GetComponent<PropertyScript>();
+                    propertyTouchscript = bookObject.GetComponent<PropertyTouch>();
                     setActivePlane = true;
                     i += 1;
-                } else if(script.Property) {
+                } else if(propertyTouchscript.Property) {
                     setActivePlane = false;
                     spawnObject.transform.position = hitPose.position;
                 }
             }
         }
-        if (script != null) {
-            if (!script.Property ) {
+        if (propertyTouchscript != null) {
+            if (!propertyTouchscript.Property ) {
                 setActivePlane = true;
             }
         }

@@ -8,6 +8,7 @@ TagManager:
   - toggle
   - Record
   - AR Plane
+  - VoiceToggle
   layers:
   - Default
   - TransparentFX

@@ -422,8 +422,8 @@ GameObject:
   - component: {fileID: 385392434}
   - component: {fileID: 385392435}
   m_Layer: 5
-  m_Name: Toggle
-  m_TagString: toggle
+  m_Name: VoiceToggle
+  m_TagString: VoiceToggle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,13 +495,13 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 385392435}
+        m_TargetAssemblyTypeName: VoiceToggleScript, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9045cc09344ae0a652bb7f47b8fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 580461642}
+  displayText: {fileID: 580461642}
 --- !u!114 &580461642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,6 @@ GameObject:
   - component: {fileID: 748238887}
   - component: {fileID: 748238890}
   - component: {fileID: 748238889}
-  - component: {fileID: 748238888}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1048,19 +1047,6 @@ RectTransform:
   m_AnchoredPosition: {x: 9.5, y: -3.5}
   m_SizeDelta: {x: 1280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &748238888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748238886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e9045cc09344ae0a652bb7f47b8fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 748238889}
 --- !u!114 &748238889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b61398114394bfebaed130f00df14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 1043505386504627021, guid: 8ec85ca1bb1c54c7caa3dc01345e3415, type: 3}
+  cubePrefab: {fileID: 5325948832510742894, guid: f3d3653eba952459683e0bcaef368cfa, type: 3}
 --- !u!114 &959193377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,7 +1438,7 @@ GameObject:
   - component: {fileID: 1021405619}
   - component: {fileID: 1021405621}
   m_Layer: 5
-  m_Name: TextPanel
+  m_Name: CautiontText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1526,7 +1512,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1021405617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f440fde199ae41aa9c26d0cd2748c74, type: 3}
+  m_Script: {fileID: 11500000, guid: fc46afc7144c44a1b9e7bf2f40605490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1201410799

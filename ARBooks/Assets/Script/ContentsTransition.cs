@@ -3,76 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class ContentsTransition : MonoBehaviour
-{
+public class ContentsTransition : MonoBehaviour　{
     public GameObject leftPage;
     public GameObject rightPage;
 
-    GameObject textPanel;
-    BookTextScript textScript;
-    public string BookText;
+    //Canvas
+    DisplayText displayTextScript;
+    public string bookText;
 
-    public string FileName;
-    string ClipPath;
+    //Audion
+    //fileNameとは，このページに適用する音声ボイスの番号
+    public string fileName;
+    string clipPath;
     AudioSource audioSource;
-    GameObject audioSourceObject;
-    bool SoundOn = true;
+    bool playSound = true;
     AudioClip audioClip;
 
-    GameObject toggle;
-    ToggleScript script = null;
+    //VoiceToggleScript
+    VoiceToggle voiceToggleScript = null;
+    //録音とゆっくりの音声の切り替えが起こったか判断するために1つ前の録音かゆっくりどちらの状態だったかを保存する変数
     bool beforTag = true;
 
     void Start() {
+        GameObject textPanel;
+        GameObject audioSourceObject;
+        GameObject voiceToggle;
+
         textPanel = GameObject.Find("Canvas/TextPanel/Text");
-        textScript = textPanel.GetComponent<BookTextScript>();
+        displayTextScript = textPanel.GetComponent<DisplayText>();
+
         audioSourceObject = GameObject.Find("audioSourceObject");
         audioSource = audioSourceObject.GetComponent<AudioSource>();
-        toggle = GameObject.FindGameObjectWithTag("toggle");
-        script = toggle.GetComponent<ToggleScript>();
+
+        voiceToggle = GameObject.FindGameObjectWithTag("VoiceToggle");
+        voiceToggleScript = voiceToggle.GetComponent<VoiceToggle>();
         LoudClip();
     }
 
+    //本が生成された時と録音ボイスとゆっくりボイスの切り替えがあったときに，音声データの読み込みを行っている．
+    //cilipPathは，voiceの保存先のパスとfileNameでできている
     void LoudClip() {
-        if(script.Property != beforTag) {
-            if (script.Property) {
-                ClipPath = Path.Combine(UnityEngine.Application.persistentDataPath + "/voice/Pig_RecordVoice/", FileName + ".wav");
-                using (WWW www = new WWW("file://" + ClipPath)) {
+        if(voiceToggleScript.VoiceProperty != beforTag) {
+            if (voiceToggleScript.VoiceProperty) {
+                clipPath = Path.Combine(UnityEngine.Application.persistentDataPath + "/voice/Pig_RecordVoice/", fileName + ".wav");
+                using (WWW www = new WWW("file://" + clipPath)) {
                     audioClip = www.GetAudioClip(false, true);
                     if (audioClip.loadState != AudioDataLoadState.Loaded) {
                         //ここにロード失敗処理
                         Debug.Log("Failed to load AudioClip.");
                     }
                 }
-            } else if (!script.Property) {
-                ClipPath = Path.Combine("Pig_DefultVoice", FileName);
-                audioClip = (AudioClip)Resources.Load(ClipPath);
+            } else if (!voiceToggleScript.VoiceProperty) {
+                clipPath = Path.Combine("Pig_DefultVoice", fileName);
+                audioClip = (AudioClip)Resources.Load(clipPath);
             }
-            beforTag = script.Property;
+            beforTag = voiceToggleScript.VoiceProperty;
         }
     }
 
     void OnSound() {
-        if (SoundOn) {
+        if (playSound) {
             audioSource.clip = audioClip;
             Debug.Log(audioSource.clip);
             audioSource.Play();
-            SoundOn = false;  
+            playSound = false;  
         } 
     }
 
     void OffSound() {
-        if (!SoundOn) {
+        if (!playSound) {
             audioSource.Stop();
-            SoundOn = true; 
+            playSound = true; 
         }
     }
 
-    void Update()
-    {
+    void Update()　{
         LoudClip();
+        //ページの切り替えを判断している．
         if (rightPage.transform.eulerAngles.z < 5 && leftPage.transform.eulerAngles.z > 175) {
-            textScript.SetText(BookText);
+            displayTextScript.ReplaceText(bookText);
             OnSound();
             foreach (Transform child in transform) {
                 child.gameObject.SetActive(true);
