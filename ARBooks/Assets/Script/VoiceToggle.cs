@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
+//音読機能でデフォルトボイス・録音ボイスどれを使うかを判定するクラス
 public class VoiceToggle : MonoBehaviour {
     public Graphic offGraphic;
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
+//ページに適した音声とオブジェクトの再生・生成を行うクラス
 public class ContentsTransition : MonoBehaviour　{
     public GameObject leftPage;
     public GameObject rightPage;

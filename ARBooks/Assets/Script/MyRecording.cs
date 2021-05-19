@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//録音・再生・保存をするクラス
 public class MyRecording : MonoBehaviour{
     AudioClip myclip;
     AudioSource audioSource;

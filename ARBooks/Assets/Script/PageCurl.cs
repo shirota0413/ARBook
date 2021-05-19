@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.EventSystems;
 
+
+//本をスワイプすることによってページをめくるクラス
 public class PageCurl : MonoBehaviour {
     // Start is called before the first frame update
     bool nextCurl = false;

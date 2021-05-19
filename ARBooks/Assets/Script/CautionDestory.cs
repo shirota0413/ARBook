@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//表示されている注意書きと○・×を削除するクラス
 public class CautionDestory : MonoBehaviour {
     
 

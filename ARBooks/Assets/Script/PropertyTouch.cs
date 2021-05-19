@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//本の真ん中をタップしている状態かどうか判定するクラス
 public class PropertyTouch : MonoBehaviour {
     private bool tag;
 

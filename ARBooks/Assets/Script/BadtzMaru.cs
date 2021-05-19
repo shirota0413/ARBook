@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//平面検出が成功しているかを○・×表現するクラス
 public class BadtzMaru: MonoBehaviour{
     public Sprite maru;
     public Sprite badtz;

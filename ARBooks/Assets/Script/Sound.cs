@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//SEの再生をするクラス
 public class Sound : MonoBehaviour {
 
     public AudioClip[] sounds;
     AudioSource audioSource;
     int i = 0;
-    // Start is called before the first frame update
+
     void Start() {
         audioSource = GetComponent<AudioSource>();
     }

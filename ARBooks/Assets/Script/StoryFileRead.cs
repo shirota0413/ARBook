@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-//録音シーンで本の文章を表示するためのデータを読み込む
+//録音シーンで本の文章を表示するためのデータを読み込むクラス
 public class StoryFileRead : MonoBehaviour{
     // Start is called before the first frame update
     GameObject textPanel;

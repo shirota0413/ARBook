@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+
+//bookオブジェクトの生成とPlaneの表示を切り替えるクラス
 public class SpawnObjectToPlane : MonoBehaviour {
     public GameObject cubePrefab;
     GameObject spawnObject;

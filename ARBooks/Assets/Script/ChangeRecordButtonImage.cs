@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//録音シーンにある再生・録音ボタンの画像をof/offによって差し替えるクラス
 public class ChangeRecordButtonImage : MonoBehaviour {
     public Sprite on;
     public Sprite off;

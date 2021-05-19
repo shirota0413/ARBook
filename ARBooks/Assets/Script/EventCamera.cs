@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//EventCameraにAR Cameraを設定するクラス
 public class EventCamera : MonoBehaviour {
     Camera myCamera;
 
